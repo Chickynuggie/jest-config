@@ -8,6 +8,31 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
+  "jest": {
+    "preset": "jest-preset-angular",
+    "rootDir": "./",
+    "modulePaths": [
+      "<rootDir>"
+    ],
+    "moduleNameMapper": {
+      "^@app/(.*)": "<rootDir>/src/app/$1"
+    },
+    "coveragePathIgnorePatterns": [
+      "<rootDir>/src/app/core/swagger-api",
+      "<rootDir>/src/app/core/swagger-api-v1"
+    ],
+    "setupFilesAfterEnv": [
+      "<rootDir>/setup-jest.ts"
+    ],
+    "transform": {
+      "\\.html$": [
+        "ts-jest",
+        {
+          "tsconfig": "<rootDir>/tsconfig.spec.json"
+        }
+      ]
+    }
+  },
   "private": true,
   "dependencies": {
     "@angular/animations": "^18.2.0",
@@ -26,13 +51,9 @@
     "@angular-devkit/build-angular": "^18.2.12",
     "@angular/cli": "^18.2.12",
     "@angular/compiler-cli": "^18.2.0",
-    "@types/jasmine": "~5.1.0",
-    "jasmine-core": "~5.2.0",
-    "karma": "~6.4.0",
-    "karma-chrome-launcher": "~3.2.0",
-    "karma-coverage": "~2.2.0",
-    "karma-jasmine": "~5.1.0",
-    "karma-jasmine-html-reporter": "~2.1.0",
+    "@types/jest": "^29.5.12",
+    "jest": "^29.7.0",
+    "jest-preset-angular": "^14.3.3",
     "typescript": "~5.5.2"
   }
 }
